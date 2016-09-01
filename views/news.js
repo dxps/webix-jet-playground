@@ -1,6 +1,7 @@
 define(
     [],
     function () {
+
         var ui = {
             template: "News section"
         };
@@ -8,5 +9,6 @@ define(
         return {
             $ui: ui
         };
+
     }
 );
