@@ -24,9 +24,12 @@ define([
                     body: "Data is updated"
                 });
 
-                $scope.on(records.data, "onDataUpdate", function () {
+                $scope.on(records.data, "onDataUpdate", function (/* id, data */) {
+                    // called when data item is in update process
+                    // id = id of the item   (id)
+                    // data = new data hash  (object)
                     popup.show();
-                //     setTimeout(function () { popup.close(); }, 3000);
+                    setTimeout(function () { popup.close(); }, 2000);
                 });
 
                 view.parse(records.data);
