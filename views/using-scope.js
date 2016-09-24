@@ -17,15 +17,16 @@ define([
 
                 popup = $scope.ui({
                     view: "popup",
-                    width:200,
-                    height:60,
+                    width: 200,
+                    height: 60,
+                    css: "dataLoadingPopup",
                     position: "center",
                     body: "Data is updated"
                 });
 
                 $scope.on(records.data, "onDataUpdate", function () {
                     popup.show();
-                    setTimeout(function () { popup.close(); }, 3000);
+                //     setTimeout(function () { popup.close(); }, 3000);
                 });
 
                 view.parse(records.data);
