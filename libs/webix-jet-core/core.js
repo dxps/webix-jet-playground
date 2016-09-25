@@ -23,6 +23,8 @@ define([
 			//route to page
 			var parsed = parse_parts(path);
 			scope.path = scope.path.slice(0, index).concat(parsed);
+			if (config)
+				webix.extend(scope.path[index].params, config, true);
 		} else {
 			//set parameters
 			webix.extend(scope.path[index].params, path, true);
@@ -93,8 +95,9 @@ define([
 		
 			//prepare layout for view loading
 			if (this.$layout){
+				var subname = this.name+":subview";
 				this.$layout = {
-					root : (this._ui.$$ || webix.$$)(this.name+":subview"),
+					root : (this._ui.$$ ? this._ui.$$(subname) : webix.$$(subname)),
 					sub: 		subui,
 					parent: 	this,
 					index: 		this.index + 1
@@ -451,6 +454,7 @@ define([
 			this.ui(this._windows[i]);
 		
 		this._ui = webix.ui(subview, this.root);
+
 		if (this.parent)
 			this.root = this._ui;
 
